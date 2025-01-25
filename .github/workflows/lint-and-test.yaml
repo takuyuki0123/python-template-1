@@ -23,9 +23,8 @@ jobs:
       - name: Install dependencies
         run: uv pip install -r requirements-dev.txt --system
 
-      - name: Run Pysen
-        run: uv run pysen run lint
-        continue-on-error: true
-
       - name: Run Pytest
         run: uv run pytest tests
+
+      - name: Run Pysen
+        run: uv run pysen run lint
