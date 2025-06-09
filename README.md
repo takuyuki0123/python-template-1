@@ -7,7 +7,9 @@ Pythonプロジェクト用のテンプレートリポジトリ
 .
 ├── .github
 │   └── workflows
-│       └── lint-and-test.yaml
+│       ├── claude-review.yml
+│       ├── ruff.yml
+│       └── type-check.yml
 ├── src
 │   ├── __init__.py
 │   └── sample.py
@@ -19,48 +21,23 @@ Pythonプロジェクト用のテンプレートリポジトリ
 ├── Makefile
 ├── README.md
 ├── pyproject.toml
-├── requirements-dev.txt
-└── requirements.txt
+└── uv.lock
 ```
 
-## lint-and-test.yaml
+## ruff.yml
 
-GitHub Actions でテスト&lintを実行するための設定ファイル。
+GitHub Actions で ruff によるコード静的解析を実行するための設定ファイル。
 
 必要に応じて下記を変更してください。
 
 - Pythonのバージョン (デフォルトは3.12)
-
-```yaml
-...
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: 3.12
-...
-```
-
-- requirements のパス (デフォルトは `requirements-dev.txt`)
-
-```yaml
-...
-      - name: Install dependencies
-        run: uv pip install -r requirements-dev.txt --system
-...
-```
-
-> [!IMPORTANT]
-> requirementsには pytest や pysen を実行するのに必要なパッケージを記述しておくこと (本テンプレートの `requirements-dev.txt` には記述済み)
-
-- GitHub Actions のトリガー (デフォルトは mainに対する Push と Pull Request)
+- ruffのバージョン (デフォルトは0.11.13)
+- GitHub Actions のトリガー (デフォルトでは Push がトリガー)
 
 ```yaml
 ...
 on:
-  pull_request:
   push:
-    branches:
-      - main
 ...
 ```
 
@@ -80,17 +57,21 @@ pytest tests
 pytest tests/test_sample.py
 ```
 
-### lint
+### ruffによる静的解析
 
 ```bash
-pysen run lint
+ruff check
 ```
-
-> [!IMPORTANT]
-> Gitで追跡されていないファイルはpysenのチェック対象外となるため、`git add` でステージングしてから実行してください。
 
 ### 自動フォーマット
 
 ```bash
-pysen run format
+ruff format
+```
+
+
+### tyによる型チェック
+
+```bash
+ty check
 ```

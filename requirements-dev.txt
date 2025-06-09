@@ -1,7 +1,0 @@
-black
-flake8
-isort<6
-mypy
-pysen
-pytest
-setuptools
