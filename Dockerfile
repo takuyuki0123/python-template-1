@@ -11,4 +11,4 @@ RUN apt-get update && \
         git && \
     rm -rf /var/lib/apt/lists/*
 
-RUN uv sync
+RUN uv sync && uv run pre-commit install

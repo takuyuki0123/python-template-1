@@ -1,4 +1,5 @@
 # python-template
+
 Pythonプロジェクト用のテンプレートリポジトリ
 
 ## ファイル構成
@@ -17,11 +18,20 @@ Pythonプロジェクト用のテンプレートリポジトリ
 │   ├── __init__.py
 │   └── test_sample.py
 ├── .gitignore
+├── .pre-commit-config.yaml
 ├── Dockerfile
 ├── Makefile
 ├── README.md
 ├── pyproject.toml
 └── uv.lock
+```
+
+## .pre-commit-config.yaml
+
+以下のコマンドを実行することで、pre-commitの設定をインストールできます。
+
+```bash
+pre-commit install
 ```
 
 ## ruff.yml
@@ -63,10 +73,10 @@ on:
 GitHub Actions で Claude AI によるコードレビューを実行するための設定ファイル。
 Pull Request 内で @claude とメンションするとレビューが実行されます。
 
-> ![IMPORTANT]
+> \[!IMPORTANT\]
+>
 > - AnthropicのAPIキーが必要です。GitHub Secretsに `ANTHROPIC_API_KEY` を設定してください。
 > - [GitHub App](https://github.com/organizations/athenatech-jp/settings/installations/68033881)ページで、リポジトリアクセスを許可してください。
-
 
 ## ローカル環境でのテスト&lint実行方法
 
@@ -95,7 +105,6 @@ ruff check
 ```bash
 ruff format
 ```
-
 
 ### tyによる型チェック
 
