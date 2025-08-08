@@ -34,19 +34,16 @@ Pythonプロジェクト用のテンプレートリポジトリ
 curl -LsSf https://astral.sh/uv/install.sh | less
 ```
 
-2. 依存関係のインストール
+2. 依存関係のインストール / pre-commitの設定
+
+- 下記を実行すると、依存関係のインストールと pre-commit の設定が実行されます。
+- `uv sync` と `uv run pre-commit install` を実行しても同じです。
 
 ```bash
-uv sync
+make init
 ```
 
-3. pre-commitの設定
-
-```bash
-uv run pre-commit install
-```
-
-4. Claude Code用に API Key を設定する
+3. Claude Code用に API Key を設定する
 
 - 以下のコマンドを実行すると `~/.claude/settings.json` に Claude API Key が設定されます。
 - **すでに設定されている場合は上書きされます。**
