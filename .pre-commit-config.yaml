@@ -58,6 +58,13 @@ repos:
           # - mdformat-toc  # 目次を自動生成する
           # - mdformat-black  # コードブロック内のコードをフォーマットする
 
+  # Gitleaks
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.28.0
+    hooks:
+      - id: gitleaks
+        args: ["--staged"]  # 変更差分を走査
+
   # word spelling linter
   # - repo: https://github.com/codespell-project/codespell
   #   rev: v2.2.4
