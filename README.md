@@ -58,6 +58,7 @@ make setup-claude-api-key
 
 - Pull Request 内で @claude とメンションするとレビューが実行されます。
 
+
 > \[!IMPORTANT\]
 >
 > - AnthropicのAPIキーが必要です。GitHub Secretsに `ANTHROPIC_API_KEY` を設定してください。
